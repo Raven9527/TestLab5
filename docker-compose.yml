@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  keystonejs:
+    image: ntutselab/keystonejs
+    ports:
+     - "3000:3000"
+    links:
+     - mongodb
+  mongodb:
+    image: mongo
+    ports:
+     - "27017:27017"
+  # robot:
+  #   image: ppodgorsek/robot-framework:3.5.0
+  #   links:
+  #     - keystonejs
+  #   volumes:
+  #     - ./reports:/opt/robotframework/reports:Z
+  #     - ./tests:/opt/robotframework/tests:Z
