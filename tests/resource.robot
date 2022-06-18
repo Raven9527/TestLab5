@@ -60,6 +60,15 @@ Enter Comment Page
     ${Comment List}=    Set Variable    xpath://div[@data-screen-id='list']
     Wait For Element    ${Comment List}
 
+Enter Comment Page Without Create Post
+    ${Home Link}=    Set Variable    xpath://li[@data-section-label="octicon-home"]/a
+    Click Link    ${Home Link}
+    ${Comments Link}=    Set Variable    xpath://div[@data-list-path='post-comments']//a
+    Wait For Element    ${Comments Link}
+    Click Link    ${Comments Link}
+    ${Comment List}=    Set Variable    xpath://div[@data-screen-id='list']
+    Wait For Element    ${Comment List}
+
 Enter Category Page
     ${Category Link}=    Set Variable    xpath://div[@data-list-path="post-categories"]//a[@class="dashboard-group__list-tile"]
     Wait For Element    ${Category Link}
@@ -87,6 +96,12 @@ Wait For Element
     Wait Until Page Contains Element    ${element}    10
     Wait Until Element Is Visible    ${element}    10
     Wait Until Element Is Enabled    ${element}    10
+
+Wait For Element By Time
+    [Arguments]    ${element}    ${timeout}
+    Wait Until Page Contains Element    ${element}    ${timeout}
+    Wait Until Element Is Visible    ${element}    ${timeout}
+    Wait Until Element Is Enabled    ${element}    ${timeout}
 
 Wait Until Element Not Exist
     [Arguments]    ${element}
