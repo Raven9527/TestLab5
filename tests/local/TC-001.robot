@@ -22,3 +22,14 @@ Verify That Not Have A New Post In Post List
     [Arguments]    ${post_title}
     ${post} =    Set Variable    //td[@class='ItemList__col']//*[normalize-space()='${post_title}']
     Wait Until Element Not Exist    ${post}
+
+Create Post Scenario
+    [Arguments]    ${post_name}    ${post_message}
+    Click Craete Post Button
+    Input Post Title In Pop Windows    ${post_name}
+    Click Craete Post Button In Pop Windows
+    Input Post Message In Post View    ${post_message}
+    Click Save Post Button In Post View
+    Verify The Hint Message Show In Header When Save Post Successfully
+    Back To Post List In Post View
+    Verify That Have A New Post Is Created Successfully In Post List    ${post_name}

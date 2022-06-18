@@ -178,3 +178,8 @@ Go To Admin Page
     ${admin_link} =    Set Variable    //*[@id='navbar-collapse']//*[normalize-space()='Admin UI']//a
     Wait For Element    ${admin_link}
     Click Element    ${admin_link}
+
+Go Home 
+    ${home} =    Set Variable    //*[@title='Dashboard - Demo']
+    Wait For Element    ${home}
+    Click Element    ${home}

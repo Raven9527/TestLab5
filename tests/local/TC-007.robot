@@ -36,3 +36,8 @@ Create Category Scenario
     Verify That Have A New Category Is Created Successfully In Category List    ${name}
     ${count_after_category} =    Get Feature Count
     Should Not Be Equal    ${count}    ${count_after_category}
+
+TC-007's Teardown
+    [Arguments]    ${category}
+    Remove A Category   ${category}
+    Go Home
