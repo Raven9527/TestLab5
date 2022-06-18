@@ -137,7 +137,44 @@ Get Feature Count
 Switch To Post Page
     ${link} =    Set Variable    //*[@data-list-path='posts']//a[@href='/keystone/posts']
     Click Link    ${link}
+    Wait For Post List Block
 
 Switch To Comment Page
     ${link} =    Set Variable    //*[@data-list-path='post-comments']//a[@href='/keystone/post-comments']
     Click Link    ${link}
+    Wait For Post List Block
+
+Switch To Category Page
+    ${link} =    Set Variable    //*[@data-list-path='post-categories']//a[@href='/keystone/post-categories']
+    Click Link    ${link}
+    Wait For Post List Block
+
+Exit Pop Winodws
+    ${windows} =    Set Variable    //*[@data-screen-id='modal-dialog']
+    ${cancel_button} =    Set Variable    //button[@data-button-type='cancel' and normalize-space()='Cancel']
+    Click Button    ${cancel_button}
+    Wait Until Element Not Exist  ${windows}
+
+Go To Demo Page
+    ${demo_page} =    Set Variable    //*[@title='Front page - Demo']
+    Wait For Element    ${demo_page}
+    Click Element    ${demo_page}
+
+Go To Blog Page
+    Go To Demo Page
+    ${blog_page} =    Set Variable    //li[normalize-space()='Blog']//a
+    Wait For Element    ${blog_page}
+    Click Element    ${blog_page}
+    Wait For Element    //*[@class='page-header']//*[normalize-space()='Blog']
+
+Select Category On Blog post_message
+    [Arguments]    ${category}
+    ${category_field} =    Set Variable    //li[@role='presentation']//a[@href='/blog/${category}']
+    Wait For Element    ${category_field}
+    Click Element    ${category_field}
+    Wait For Element    //*[@class='page-header']//*[normalize-space()='${category}']
+
+Go To Admin Page
+    ${admin_link} =    Set Variable    //*[@id='navbar-collapse']//*[normalize-space()='Admin UI']//a
+    Wait For Element    ${admin_link}
+    Click Element    ${admin_link}

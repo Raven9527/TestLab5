@@ -40,13 +40,6 @@ Click Craete Comment Button In Pop Windows
     ${Create Button} =    Set Variable    xpath://button[text()='Create']
     Click Button    ${Create Button}
 
-# not done
-Exit Pop Winodws
-    ${windows} =    Set Variable    //*[@data-screen-id='modal-dialog']
-    ${cancel_button} =    Set Variable    //button[@data-button-type='cancel' and normalize-space()='Cancel']
-    Click Button    ${cancel_button}
-    Wait Until Element Not Exist  ${windows}
-
 Click Save Comment Button In Comment View
     ${Save Button} =    Set Variable    xpath://button[@type='button' and normalize-space()='Save']
     Click Button    ${Save Button}

@@ -23,12 +23,6 @@ Click Craete Post Button In Pop Windows
     ${Create Button} =    Set Variable    xpath://button[text()='Create']
     Click Button    ${Create Button}
 
-Exit Pop Winodws
-    ${windows} =    Set Variable    //*[@data-screen-id='modal-dialog']
-    ${cancel_button} =    Set Variable    //button[@data-button-type='cancel' and normalize-space()='Cancel']
-    Click Button    ${cancel_button}
-    Wait Until Element Not Exist  ${windows}
-
 Input Post Titel In Post View
     [Arguments]    ${post_title}
     ${inpur_field}=    Set Variable    xpath://*[@class='EditForm__name-field']//*[@name='name']
@@ -43,6 +37,25 @@ Input Post Message In Post View
     Click Element    tinymce
     Input Text    tinymce    ${post_message}
     Unselect Frame
+
+Input Category In Post View
+    [Arguments]    ${category}
+    Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
+    ${category_selector} =    Set Variable    //label[@for='categories']//..//div[@class='FormField__inner field-size-full']//*[@class='Select-arrow']
+    Wait For Element    ${category_selector}
+    Click Element    ${category_selector}
+    ${option} =    Set Variable    xpath://*[@role="option" and text()="${category}"]
+    Wait For Element    ${option}
+    Click Element    ${option}
+    
+Input Comment State In Post View
+    [Arguments]    ${state}
+    ${state_selector} =    Set Variable    //label[@for='state']//..//div[@class='FormField__inner field-size-full']//*[@class='Select-arrow']
+    Wait For Element    ${state_selector}
+    Click Element    ${state_selector}
+    ${option} =    Set Variable    xpath://*[@role="option" and text()="${state}"]
+    Wait For Element    ${option}
+    Click Element    ${option}
 
 Click Save Post Button In Post View
     ${Save Button} =    Set Variable    xpath://button[@type='button' and normalize-space()='Save']
