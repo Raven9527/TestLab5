@@ -107,6 +107,10 @@ Wait Until Element Not Exist
     [Arguments]    ${element}
     Wait Until Element Is Not Visible    ${element}    timeout=10
 
+Wait Until Element Not Exist By Time
+    [Arguments]    ${element}    ${timeout}
+    Wait Until Element Is Not Visible    ${element}    timeout=${timeout}
+
 Input User Email
     [Arguments]    ${email}
     ${Email Field}=    Set Variable    xpath://input[@name='email']

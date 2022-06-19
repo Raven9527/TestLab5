@@ -75,6 +75,10 @@ Click Cancel Button On Delete Enquire Pop Window
     Wait For Element    ${Cancel Button}
     Click Button    ${Cancel Button}
 
+Wait For Create Enquire Success
+    ${block} =    Set Variable    //div[@class='jumbotron text-center']//*[normalize-space()='Success!']
+    Wait For Element    ${block}
+
 Remove A Enquire
     [Arguments]    ${name}
     ${Enquire Delete Button}=    Set Variable    xpath=//td[@class='ItemList__col']//*[normalize-space()='${name}']//..//preceding-sibling::td//button[contains(@class, 'delete')]
