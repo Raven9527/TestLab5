@@ -183,3 +183,10 @@ Go Home
     ${home} =    Set Variable    //*[@title='Dashboard - Demo']
     Wait For Element    ${home}
     Click Element    ${home}
+
+Go To Contact Page
+    Go To Demo Page
+    ${contact_page} =    Set Variable    //li[normalize-space()='Contact']//a
+    Wait For Element    ${contact_page}
+    Click Element    ${contact_page}
+    Wait For Element    //*[@class='page-header']//*[normalize-space()='Contact']
